@@ -1,0 +1,63 @@
+.footer {
+  background: #0a0a0a;
+  color: #fff;
+  padding: 40px 20px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.left h2 {
+  color: #facc15;
+  margin-bottom: 10px;
+}
+
+.left p {
+  font-size: 14px;
+  color: #aaa;
+}
+
+.links h4,
+.subscribe h4 {
+  margin-bottom: 10px;
+}
+
+.links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.links li {
+  margin-bottom: 6px;
+  color: #ccc;
+}
+
+.subscribe input {
+  padding: 8px;
+  border: none;
+  margin-right: 5px;
+}
+
+.subscribe button {
+  padding: 8px 12px;
+  background: #facc15;
+  border: none;
+  cursor: pointer;
+}
+
+.bottom {
+  border-top: 1px solid #222;
+  margin-top: 30px;
+  padding-top: 10px;
+  text-align: center;
+  font-size: 13px;
+  color: #777;
+}
+
+.bottom > p {
+    margin-top: 10px;
+}
