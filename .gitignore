@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+# Ignore secrets
+*.postman_environment.json
+
+# Keep collections
+!*.postman_collection.json

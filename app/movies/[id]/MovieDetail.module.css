@@ -1,0 +1,18 @@
+.page {
+  min-height: 100vh;
+  color: white;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 100px 20px;
+  font-size: 1.4rem;
+  color: #aaa;
+}

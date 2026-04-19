@@ -1,0 +1,132 @@
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 25px 20px;
+}
+
+.title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #aaa;
+  font-size: 1.1rem;
+  max-width: 700px;
+}
+
+.tabs {
+  position: sticky;
+  top: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  z-index: 10;
+  padding: 40px 0px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+  transition: top 0.4s;
+}
+
+.navHidden .tabs {
+  top: 50;                   
+}
+
+.tab {
+  padding: 12px 28px;
+  background: #27272a;
+  color: white;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: all 0.3s;
+  border: none;
+}
+
+.tab:hover {
+  background: #67676d;
+  /* color: rgb(194, 194, 194); */
+}
+
+.tabActive {
+  background: #facc15;
+  color: #111;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 30px;
+}
+
+.paginationSection {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.showing {
+  font-size: 1.1rem;
+  color: #aaa;
+}
+
+.highlight {
+  color: #facc15;
+  font-weight: 700;
+}
+
+.line {
+  width: 220px;
+  height: 3px;
+  background: linear-gradient(to right, transparent, #facc15, transparent);
+  margin: 20px auto;
+}
+
+.loadMore {
+  background: #222;
+  border: 2px solid white;
+  color: white;
+  padding: 18px 48px;
+  border-radius: 9999px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.loadMore:hover {
+  background: #333;
+  transform: scale(1.03);
+  border: 2px solid #facc15;
+  color: #facc15;
+}
+
+/* Add these styles at the bottom of CinemasPage.module.css */
+
+.noResults {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px 20px;
+  color: #888;
+}
+
+.noResultsTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #ddd;
+}
+
+.noResultsImage {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+  opacity: 0.75;
+  filter: brightness(0.9);
+}
+
+.noResultsSubtitle {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 420px;
+  margin: 0 auto;
+}
+

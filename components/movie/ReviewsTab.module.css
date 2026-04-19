@@ -1,0 +1,105 @@
+.reviews {
+  padding: 20px 0;
+}
+
+.sectionTitle {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  color: #facc15;
+}
+
+.writeReview {
+  background: #1a1a1a;
+  padding: 25px;
+  border-radius: 16px;
+  margin-bottom: 50px;
+}
+
+.writeReview h3 {
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.stars {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.starFilled {
+  color: #facc15;
+}
+
+.starEmpty {
+  color: #444;
+}
+
+.writeReview textarea {
+  width: 100%;
+  background: #222;
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  color: white;
+  font-size: 1.05rem;
+  margin-bottom: 20px;
+  resize: vertical;
+  min-height: 120px;
+}
+
+.writeReview button {
+  background: #facc15;
+  color: #111;
+  font-weight: 700;
+  padding: 14px 40px;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.reviewsList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.reviewCard {
+  background: #1a1a1a;
+  padding: 24px;
+  border-radius: 16px;
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.reviewer {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.date {
+  font-size: 0.9rem;
+  color: #777;
+  margin-left: 12px;
+}
+
+.reviewStars {
+  font-size: 1.4rem;
+  color: #facc15;
+}
+
+.reviewText {
+  line-height: 1.6;
+  color: #ddd;
+}
+
+.noReviews {
+  text-align: center;
+  color: #777;
+  font-size: 1.2rem;
+  padding: 60px 20px;
+}

@@ -1,0 +1,15 @@
+.showtimes {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  color: #facc15;
+}
+
+.comingSoon {
+  font-size: 1.3rem;
+  color: #777;
+}

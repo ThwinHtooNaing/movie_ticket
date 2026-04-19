@@ -1,7 +1,25 @@
-import React from 'react'
+import MoviesSection from "@/components/MoviesSection";
+import styles from "./MoviesPage.module.css";
 
-export default function page() {
+export default async function MoviesPage() {
+  const res = await fetch("http://localhost:3000/api/movies?page=1&limit=8", {
+    cache: "force-cache",
+  });
+
+  const data = await res.json();
+
   return (
-    <div>hello</div>
-  )
+    <div className={styles.page}>
+      {/* Header */}
+      <div className={styles.header}>
+        <h1 className={styles.title}>All Movies</h1>
+        <p className={styles.subtitle}>
+          Explore the latest cinematic masterpieces.
+        </p>
+      </div>
+
+      {/* Reusable component */}
+      <MoviesSection initialData={data} />
+    </div>
+  );
 }
