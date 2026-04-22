@@ -15,7 +15,7 @@ export default function ProgressStepper({ currentStep = 2 }) {
           <span className={styles.label}>{step}</span>
           {i < steps.length - 1 && (
             <div
-              className={`${styles.line} ${i === 0 ? styles.lineYellow : ""}`}
+              className={`${styles.line} ${i < currentStep - 1 ? styles.lineYellow : ""}`}
             />
           )}
         </div>

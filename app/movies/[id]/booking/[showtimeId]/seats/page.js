@@ -1,4 +1,3 @@
-// app/movies/[id]/booking/[showtimeId]/seats/page.js
 "use client";
 
 import { useEffect, useState } from "react";
@@ -22,7 +21,7 @@ export default function SeatSelectionPage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        // Get movie + showtime details
+        
         const [movieRes, seatRes] = await Promise.all([
           fetch(`/api/movies/${movieId}`),
           fetch(`/api/showtimes/${showtimeId}/seats`),
@@ -64,6 +63,30 @@ export default function SeatSelectionPage() {
 
   if (loading) return <div className={styles.loading}>Loading seats...</div>;
 
+  function handleProceed() {
+    localStorage.setItem(
+      "currentBooking",
+      JSON.stringify({
+        booking: {
+          movieTitle: movie?.title,
+          cinema: showtime?.cinema_name,
+          date: new Date(showtime?.start_time).toLocaleDateString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          }),
+          time: new Date(showtime?.start_time).toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          }),
+          poster_url: movie?.poster_url,
+        },
+        selectedSeats: selectedSeats,
+      }),
+    );
+    router.push(`/movies/${movieId}/booking/${showtimeId}/payment`)
+  }
+
   return (
     <div className={styles.page}>
       <ProgressStepper currentStep={2} />
@@ -92,9 +115,7 @@ export default function SeatSelectionPage() {
         <SelectedSeatsBar
           selectedSeats={selectedSeats}
           totalPrice={totalPrice}
-          onProceed={() =>
-            router.push(`/movies/${movieId}/booking/${showtimeId}/payment`)
-          }
+          onProceed={handleProceed}
         />
       </div>
     </div>

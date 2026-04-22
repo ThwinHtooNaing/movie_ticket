@@ -1,0 +1,348 @@
+.page {
+  background: #0a0a0a;
+  min-height: 100vh;
+  color: white;
+  padding-bottom: 80px;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 460px;
+  gap: 40px;
+}
+
+/* Timer */
+.timer {
+    margin-top: 20px;
+  background: rgba(250, 204, 21, 0.1);
+  border: 1px solid red;
+  color: red;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.time {
+  font-size: 1.35rem;
+  font-weight: 700;
+
+  color: red;
+}
+
+/* Order Summary */
+.orderSummary {
+  background: #111;
+  border-radius: 20px;
+  padding: 32px;
+  border: 1px solid #222;
+}
+
+.movieCard {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.poster {
+  border-radius: 16px;
+  width: 180px;
+  height: 200px;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.nowPlaying {
+  background: #facc15;
+  color: #111;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 9999px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.movieTitle {
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.experience {
+  color: #aaa;
+  font-size: 1.1rem;
+}
+
+.details {
+  background: #1a1a1a;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 32px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #222;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.pricing {
+  background: #1a1a1a;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.breakdown .line {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  color: #ccc;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 2px solid #333;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.totalAmount {
+  color: #facc15;
+}
+
+/* Payment Section */
+.paymentSection {
+  background: #111;
+  border-radius: 20px;
+  padding: 32px;
+  border: 1px solid #222;
+  height: fit-content;
+  position: sticky;
+  top: 40px;
+}
+
+.paymentSection h2 {
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #aaa;
+  margin-bottom: 28px;
+}
+
+.paymentOption {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+
+.paymentOption:hover {
+  background: #222;
+}
+
+.paymentOption.active {
+  border-color: #facc15;
+  background: rgba(250, 204, 21, 0.08);
+}
+
+.qrIcon, .cardIcon {
+  font-size: 2.2rem;
+}
+
+.savedCards h4 {
+  margin: 24px 0 12px;
+  color: #ddd;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #1a1a1a;
+  padding: 16px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-bottom: 12px;
+  border: 2px solid transparent;
+}
+
+.card.active {
+  border-color: #facc15;
+}
+
+.addNew {
+  color: #facc15;
+  cursor: pointer;
+  padding: 16px;
+  border: 2px dashed #444;
+  border-radius: 12px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.cvvSection {
+  margin: 24px 0;
+}
+
+.cvvSection label {
+  display: block;
+  margin-bottom: 8px;
+  color: #aaa;
+}
+
+.cvvSection input {
+  width: 100%;
+  background: #1a1a1a;
+  border: 1px solid #444;
+  padding: 14px;
+  border-radius: 12px;
+  color: white;
+  font-size: 1.1rem;
+}
+
+.payButton {
+  width: 100%;
+  background: #facc15;
+  color: #111;
+  font-weight: 700;
+  font-size: 1.25rem;
+  padding: 18px;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.secure {
+  text-align: center;
+  margin-top: 20px;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contactInfo {
+  background: #1a1a1a;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 32px;
+}
+
+.contactInfo h3 {
+  margin-bottom: 16px;
+}   
+
+.contactInfo input {
+  width: 100%;
+  background: #111;
+  border: 1px solid #333;
+  padding: 14px;
+  border-radius: 12px;
+  color: white;
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+}
+
+.cardDetails {
+  margin: 28px 0;
+  padding: 24px;
+  background: #1a1a1a;
+  border-radius: 16px;
+  border: 1px solid #333;
+}
+
+.cardDetails h4 {
+  margin-bottom: 20px;
+  color: #facc15;
+  font-size: 1.25rem;
+}
+
+.inputGroup {
+  margin-bottom: 20px;
+}
+
+.inputGroup label {
+  display: block;
+  margin-bottom: 8px;
+  color: #aaa;
+  font-size: 0.95rem;
+}
+
+.cardInput,
+.expiryInput,
+.cvvInput {
+  width: 100%;
+  background: #222;
+  border: 1px solid #444;
+  padding: 14px 16px;
+  border-radius: 12px;
+  color: white;
+  font-size: 1.1rem;
+  transition: border 0.3s;
+}
+
+.cardInput:focus,
+.expiryInput:focus,
+.cvvInput:focus {
+  border-color: #facc15;
+  outline: none;
+}
+
+.rowInputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.cvvInput {
+  max-width: 140px;
+}
+
+.cancelBtn{
+    color: #facc15;
+    margin-top: 20px;
+    font-size: 20px;
+    /* text-align: center; */
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+}
