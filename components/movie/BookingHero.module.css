@@ -1,0 +1,87 @@
+.hero {
+  display: flex;
+  gap: 60px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.poster {
+  flex: 0 0 380px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.posterImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.badges {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.badge {
+  background: rgba(250, 204, 21, 0.15);
+  color: #facc15;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.title {
+  font-size: 3.4rem;
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+
+.meta {
+  display: flex;
+  gap: 24px;
+  font-size: 1.25rem;
+  color: #ddd;
+  margin-bottom: 24px;
+}
+
+.description {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #ccc;
+  max-width: 620px;
+}
+
+/* Cinema Cover Photo Section */
+.cinemaCover {
+  margin-top: 40px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.cinemaImage {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.cinemaNameOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+  padding: 30px 24px 20px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+}

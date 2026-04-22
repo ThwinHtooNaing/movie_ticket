@@ -6,7 +6,6 @@ import { mysqlPool } from "@/utils/db";
 export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);
-
     const page = Number(searchParams.get("page")) || 1;
     const limit = Number(searchParams.get("limit")) || 10;
     const search = searchParams.get("search") || undefined;

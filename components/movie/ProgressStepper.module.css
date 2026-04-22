@@ -1,0 +1,55 @@
+.stepper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 120px;
+  margin-bottom: 60px;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.3rem;
+  border: 3px solid #333;
+  transition: all 0.3s;
+}
+
+.circle.active {
+  background: #facc15;
+  color: #111;
+  border-color: #facc15;
+}
+
+.label {
+  margin-top: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #888;
+}
+
+.line {
+  position: absolute;
+  top: 24px;
+  left: 50px;
+  width: 150px;
+  height: 3px;
+  background: #333;
+}
+
+/* First line (between MOVIE and SEATS) = Yellow */
+.lineYellow {
+  background: #facc15;
+}

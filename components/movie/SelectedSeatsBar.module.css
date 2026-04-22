@@ -1,0 +1,75 @@
+.bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #111;
+  border-top: 1px solid #333;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.label {
+  color: #aaa;
+  font-weight: 600;
+}
+
+.seatsList {
+  display: flex;
+  gap: 10px;
+}
+
+.seatTag {
+  background: #222;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.total {
+  text-align: right;
+}
+
+.totalLabel {
+  font-size: 0.95rem;
+  color: #888;
+}
+
+.price {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #facc15;
+}
+
+.checkoutBtn {
+  background: #facc15;
+  color: #111;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 15px 45px;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.checkoutBtn:hover {
+  /* transform: scale(1.05); */
+  box-shadow: 0 8px 25px rgba(250, 204, 21, 0.4);
+}

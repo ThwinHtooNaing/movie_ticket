@@ -3,7 +3,7 @@ import styles from "./MoviesPage.module.css";
 
 export default async function MoviesPage() {
   const res = await fetch("http://localhost:3000/api/movies?page=1&limit=8", {
-    cache: "force-cache",
+    next: { revalidate: 10 },
   });
 
   const data = await res.json();

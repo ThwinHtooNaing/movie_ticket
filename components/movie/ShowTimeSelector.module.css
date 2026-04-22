@@ -1,0 +1,56 @@
+.selector {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sectionTitle {
+  font-size: 1.6rem;
+  margin-bottom: 24px;
+  color: #facc15;
+}
+
+.cinemaGroup {
+  margin-bottom: 36px;
+}
+
+.cinemaGroup:last-child {
+  margin-bottom: 0;
+}
+
+.cinemaName {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.times {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.timeBtn {
+  padding: 14px 28px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: #222;
+  color: white;
+}
+
+.timeBtn:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+.timeBtn.active {
+  background: #facc15;
+  color: #111;
+}
