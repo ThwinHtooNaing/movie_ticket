@@ -24,8 +24,6 @@ export default function CinemasClient({ initialData }) {
   const [selectedDistrict, setSelectedDistrict] = useState(null);
   const [loading, setLoading] = useState(false);
   const [navbarHidden, setNavbarHidden] = useState(false);
-
-  // ✅ prevent double fetch
   const [initialized, setInitialized] = useState(false);
 
   const fetchCinemas = async () => {
@@ -49,7 +47,6 @@ export default function CinemasClient({ initialData }) {
     }
   };
 
-  // ✅ only fetch AFTER first render
   useEffect(() => {
     if (!initialized) {
       setInitialized(true);
@@ -124,11 +121,19 @@ export default function CinemasClient({ initialData }) {
         {!loading && pagination.total > 0 && cinemas.length > 0 && (
           <div className={styles.paginationSection}>
             <div>
-              Showing {pagination.loaded} of {pagination.total}
+              <span className={styles.showing}>
+                Showing <span className={styles.highlight}>
+                  {pagination.loaded} of {pagination.total}
+                </span>
+              </span>
             </div>
 
+            <div className={styles.line}></div>
+
             {pagination.loaded < pagination.total && (
-              <button onClick={handleLoadMore}>Load More Cinemas</button>
+              <button onClick={handleLoadMore} className={styles.loadMore}>
+                Load More Cinemas
+              </button>
             )}
           </div>
         )}

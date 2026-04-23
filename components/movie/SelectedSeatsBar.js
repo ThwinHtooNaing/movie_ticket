@@ -1,4 +1,3 @@
-// components/movie/SelectedSeatsBar.jsx
 import styles from "./SelectedSeatsBar.module.css";
 
 export default function SelectedSeatsBar({

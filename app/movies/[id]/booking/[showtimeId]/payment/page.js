@@ -3,9 +3,9 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import Image from "next/image";
 import ProgressStepper from "@/components/movie/ProgressStepper";
 import styles from "./PaymentPage.module.css";
+import Toast from "@/components/ui/Toast";
 
 export default function PaymentPage() {
   const { id: movieId, showtimeId } = useParams();
@@ -26,7 +26,13 @@ export default function PaymentPage() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
 
-  // Load booking data
+
+  const [toast, setToast] = useState(null);
+
+  const showToast = (message, type = "success") => {
+    setToast({ message, type });
+  };
+
   useEffect(() => {
     const saved = localStorage.getItem("currentBooking");
     if (saved) {
@@ -38,7 +44,6 @@ export default function PaymentPage() {
     }
   }, [movieId, router]);
 
-  // Countdown Timer
   useEffect(() => {
     if (timeLeft <= 0) {
       localStorage.removeItem("currentBooking");
@@ -55,7 +60,8 @@ export default function PaymentPage() {
     return sum + (parseFloat(seat.price) || 0);
   }, 0);
 
-  const handlePayment = async () => {
+
+  const submitBooking = async (isFromQR = false) => {
     if (!formData.email || !formData.phone) {
       alert("Please fill in Email and Phone Number");
       return;
@@ -63,26 +69,60 @@ export default function PaymentPage() {
 
     setIsProcessing(true);
 
-    // Simulate payment processing
-    setTimeout(() => {
-      setIsProcessing(false);
-      setPaymentSuccess(true);
+    try {
+      const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+      const currentUserId = isLoggedIn ? localStorage.getItem("userId") : null;
 
-      // Clear booking data after success
-      setTimeout(() => {
-        localStorage.removeItem("currentBooking");
-        router.push(`/success?bookingId=BOOK-${Date.now()}`);
-      }, 1800);
-    }, 1500);
+      const res = await fetch("/api/bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user_id: currentUserId ? parseInt(currentUserId) : null,
+          showtime_id: parseInt(showtimeId),
+          selected_seats: selectedSeats,
+          guest_email: formData.email,
+          guest_phone: formData.phone,
+          guest_name: formData.name || null,
+        }),
+      });
+
+      const result = await res.json();
+
+      if (result.success) {
+
+        if (isFromQR) {
+          
+          setTimeout(() => {
+            setShowQR(false);
+            router.push(`/bookings/success?bookingId=${result.booking_id}`);
+          }, 3000);
+          return
+        }
+
+        router.push(`/bookings/success?bookingId=${result.booking_id}`);
+      } else {
+        setShowQR(false);
+        alert("Payment failed: " + result.error);
+      }
+    } catch (error) {
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  const handlePayment = () => {
+    submitBooking(false);
   };
 
   const generateQR = () => {
+    if (!formData.email || !formData.phone) {
+      alert("Please fill in Email and Phone Number");
+      return;
+    }
     setShowQR(true);
-    setTimeout(() => {
-      setPaymentSuccess(true);
-      localStorage.removeItem("currentBooking");
-      router.push(`/success?bookingId=BOOK-${Date.now()}`);
-    }, 3000);
+    submitBooking(true);
+    
   };
 
   const handleCancel = () => {
@@ -101,7 +141,7 @@ export default function PaymentPage() {
         <ProgressStepper currentStep={3} />
 
         <div className={styles.main}>
-          {/* Left - Order Summary */}
+          {/* Left - Order Summary (your original) */}
           <div className={styles.orderSummary}>
             <div className={styles.movieCard}>
               <img
@@ -161,7 +201,7 @@ export default function PaymentPage() {
             </div>
           </div>
 
-          {/* Right - Payment */}
+          {/* Right - Payment (your original + QR) */}
           <div className={styles.paymentSection}>
             <h2>Payment Method</h2>
             <p className={styles.subtitle}>Secure your booking now.</p>
@@ -215,7 +255,7 @@ export default function PaymentPage() {
               />
             </div>
 
-            {/* Card Details */}
+            {/* Card Details - your original */}
             {paymentMethod === "card" && (
               <div className={styles.cardDetails}>
                 <h4>Card Information</h4>
@@ -292,6 +332,38 @@ export default function PaymentPage() {
             </button>
           </div>
         </div>
+
+        {/* Thai QR Overlay */}
+        {showQR && (
+          <div className={styles.qrOverlay}>
+            <div className={styles.qrModal}>
+              <h3>Scan to Pay with Thai QR</h3>
+              <p className={styles.qrAmount}>฿{totalPrice.toFixed(2)}</p>
+
+              <div className={styles.qrCode}>
+                <img
+                  src={`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=THAIQR|PAY|${totalPrice}|CINEMANOIR|${showtimeId}`}
+                  alt="Thai QR Code"
+                />
+              </div>
+
+              <p className={styles.qrInstruction}>
+                Open your banking app and scan this QR code
+              </p>
+              <p className={styles.qrTimer}>
+                Expires in {Math.floor(timeLeft / 60)}:
+                {(timeLeft % 60).toString().padStart(2, "0")}
+              </p>
+
+              <button
+                onClick={() => setShowQR(false)}
+                className={styles.closeQr}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
