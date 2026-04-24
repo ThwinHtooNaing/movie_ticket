@@ -23,24 +23,23 @@ export default function ShowtimesTab({ movie }) {
 
   const dateContainerRef = useRef(null);
 
-  // Dynamic dates: from TODAY to next 35 days
   const dates = useMemo(() => {
     const arr = [];
 
     const today = new Date();
-    today.setUTCHours(0, 0, 0, 0); // ✅ use UTC, not local
+    today.setUTCHours(0, 0, 0, 0); 
 
     for (let i = 0; i < 35; i++) {
       const d = new Date(today);
       d.setUTCDate(d.getUTCDate() + i);
 
       arr.push({
-        full: d.toISOString().split("T")[0], // stays correct now
+        full: d.toISOString().split("T")[0], 
         display: d.toLocaleDateString("en-US", {
           weekday: "short",
           day: "numeric",
           month: "short",
-          timeZone: "UTC", // ✅ force UTC display
+          timeZone: "UTC", 
         }),
       });
     }

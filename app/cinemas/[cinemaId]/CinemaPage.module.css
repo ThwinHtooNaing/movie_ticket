@@ -1,0 +1,348 @@
+
+.page {
+  background: #0a0a0a;
+  min-height: 100vh;
+  color: white;
+}
+
+.hero {
+  position: relative;
+  height: 320px;
+  overflow: hidden;
+}
+
+.cinemaCover {
+  position: relative;
+  height: 100%;
+}
+
+.cinemaImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.55) blur(2px);
+}
+
+.cinemaNameOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.95));
+  padding: 40px 40px 30px;
+  font-size: 2rem;
+  font-weight: 800;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.selectedDateHeader {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.selectedDateBox {
+  flex-shrink: 0;
+}
+
+.selectedDate {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #facc15;
+  border: 2px solid #facc15;
+  padding: 10px 20px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.dateNav {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.arrow {
+  background: #1f1f1f;
+  color: #facc15;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.arrow:hover {
+  background: #facc15;
+  color: #111;
+}
+
+.dateList {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 6px 4px;
+  scrollbar-width: none;
+}
+
+.dateList::-webkit-scrollbar {
+  display: none;
+}
+
+.dateItem {
+  padding: 15px 0px;
+  background: #1a1a1a;
+  border-radius: 9999px;
+  white-space: nowrap;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 110px;
+  text-align: center;
+  border: 1px solid #333;
+}
+
+.dateItem:hover {
+  border-color: #facc15;
+}
+
+.dateItem.activeDate {
+  background: #facc15;
+  color: #111;
+  border-color: #facc15;
+  font-weight: 700;
+}
+
+
+.showtimesSection {
+  margin-top: 20px;
+}
+
+.movieCard {
+  background: #111;
+  border-radius: 16px;
+  margin-bottom: 32px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+}
+
+.movieHeader {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  background: #1a1a1a;
+  align-items: flex-start;
+}
+
+.moviePoster {
+  width: 120px;
+  height: 165px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.movieInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.movieTitle {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: white;
+  margin: 0 0 8px 0;
+  line-height: 1.1;
+}
+
+.genreTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.genreTag {
+  background: #2a2a2a;
+  color: #ccc;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.detailsBtn {
+  background: transparent;
+  border: 1.5px solid #facc15;
+  color: #facc15;
+  padding: 8px 24px;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.detailsBtn:hover {
+  background: #facc15;
+  color: #111;
+}
+
+
+.screenRow {
+  padding: 18px 24px;
+  border-top: 1px solid #222;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.screenInfo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 280px;
+  flex-shrink: 0;
+}
+
+.screenName {
+  font-weight: 800;
+  color: #facc15;
+  font-size: 1.05rem;
+  white-space: nowrap;
+}
+
+.soundIcon {
+  font-size: 1.15rem;
+}
+
+.language {
+  color: #aaa;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.formatBadge {
+  background: #facc15;
+  color: #111;
+  padding: 3px 11px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.timeSlots {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.timeBtn {
+  background: #1f1f1f;
+  color: white;
+  border: 1.5px solid #444;
+  padding: 11px 26px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+  min-width: 82px;
+  text-align: center;
+}
+
+.timeBtn:hover {
+  background: #facc15;
+  color: #111;
+  border-color: #facc15;
+  transform: translateY(-1px);
+}
+
+.timeBtnActive {
+  background: #facc15;
+  color: #111;
+  border-color: #facc15;
+  font-weight: 800;
+}
+
+
+.noShowtimes {
+  text-align: center;
+  padding: 70px 20px;
+  color: #777;
+}
+
+.noShowtimesIcon {
+  font-size: 4.5rem;
+  display: block;
+  margin-bottom: 16px;
+  opacity: 0.35;
+}
+
+.noShowtimes h3 {
+  color: #ddd;
+  margin-bottom: 8px;
+  font-size: 1.35rem;
+}
+
+.loading {
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: #888;
+}
+
+.movieDesc{
+  margin-top: 12px;
+  color: #aaa;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+
+@media (max-width: 768px) {
+  .movieHeader {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .moviePoster {
+    width: 100px;
+    height: 140px;
+  }
+  
+  .screenRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .screenInfo {
+    min-width: auto;
+  }
+}

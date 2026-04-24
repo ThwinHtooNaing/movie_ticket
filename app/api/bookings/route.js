@@ -13,6 +13,8 @@ export async function POST(request) {
       guest_phone = null,
     } = await request.json();
 
+
+
     // Validation
     if (!showtime_id || !selected_seats.length) {
       return NextResponse.json(
@@ -28,6 +30,8 @@ export async function POST(request) {
         { status: 400 },
       );
     }
+
+    console.log("User Id", user_id);
 
     const connection = await pool.getConnection();
 

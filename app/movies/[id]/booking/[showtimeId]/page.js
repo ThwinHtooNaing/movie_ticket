@@ -1,4 +1,3 @@
-// app/movies/[id]/booking/[showtimeId]/page.js
 "use client";
 
 import { useEffect, useState } from "react";
@@ -20,7 +19,7 @@ export default function BookingPage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        // Fetch movie details
+        
         const movieRes = await fetch(`/api/movies/${movieId}`);
         const movieData = await movieRes.json();
         setMovie(movieData);
@@ -28,9 +27,15 @@ export default function BookingPage() {
         // Fetch all showtimes for this movie
         const showRes = await fetch(`/api/movies/${movieId}/showtimes`);
         const showData = await showRes.json();
-        setShowtimes(showData);
+        const now = new Date();
 
-        // Find the currently selected showtime
+        const filteredShowtimes = showData.filter(
+          (s) => new Date(s.start_time) >= now,
+        );
+        // const filteredShowtimes = showData.filter((s) => s.start_time >= showtimeId);
+        setShowtimes(filteredShowtimes);
+
+        
         const current = showData.find(
           (s) => String(s.showtime_id) === showtimeId,
         );

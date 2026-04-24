@@ -8,4 +8,6 @@ export const mysqlPool = mysql.createPool({
   waitForConnections: true,
   port: 3308,
   connectionLimit: 10,
+  supportBigNumbers: true,
+  bigNumberStrings: true,
 });

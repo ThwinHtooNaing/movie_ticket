@@ -1,26 +1,55 @@
+import Link from "next/link";
 import styles from "./Hero.module.css";
 
-export default function Hero() {
+export default async function Hero() {
+  
+  const res = await fetch("http://localhost:3000/api/hero", {
+    next: { revalidate: 60 }, 
+  });
+
+  if (!res.ok) {
+    return (
+      <section className={styles.hero}>
+        <div className={styles.overlay} />
+        <div className={styles.content}>
+          <p className={styles.tag}>COMING SOON</p>
+          <h1>No Movies Showing Right Now</h1>
+          <p className={styles.desc}>Please check back later.</p>
+        </div>
+      </section>
+    );
+  }
+
+  const { movie } = await res.json();
+  const rating = parseFloat(movie.avg_rating).toFixed(1);
+
   return (
-    <section className={styles.hero}>
-      {/* <div className={styles.overlay}></div> */}
+    <section
+      className={styles.hero}
+    >
+      <div className={styles.overlay} />
+      <img
+        src={movie.poster_url}
+        alt={movie.title}
+        className={styles.background}
+      />
 
       <div className={styles.content}>
-        <p className={styles.tag}>
-          PREMIERE EXCLUSIVE ★ <span>9.8</span> Rating
-        </p>
+        <div className={styles.tag}>
+          NOW SHOWING ★ <span>{rating}</span> Rating
+        </div>
 
-        <h1>The Dark Knight</h1>
+        <h1>{movie.title}</h1>
 
         <p className={styles.desc}>
-          Batman battles a sadistic anarchist who pushes him to the breaking
-          point to prove that Gotham’s heroes are just one bad day away from
-          becoming monsters.
+          {movie.description ||
+            `${movie.title} is now playing in cinemas across Bangkok.`}
         </p>
 
         <div className={styles.buttons}>
-          <button className={styles.primary}>🎟 Book Ticket</button>
-          <button className={styles.secondary}>▶ Watch Trailer</button>
+          <Link href={`/movies/${movie.id}`} className={styles.primary}>
+            🎟 Book Ticket
+          </Link>
         </div>
       </div>
     </section>

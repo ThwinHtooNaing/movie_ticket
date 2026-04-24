@@ -1,5 +1,4 @@
 "use client";
-"/app/bookings/success/page.js"
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { generateTicketPDF } from "@/utils/generateTicketPDF";

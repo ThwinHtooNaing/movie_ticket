@@ -12,14 +12,16 @@ export async function queryBuilder({
   let whereParts = [];
   let values = [];
 
-  // Search (movie name)
+  
   if (search && searchColumns.length > 0) {
-    const searchConditions = searchColumns.map((col) => `${col} LIKE ?`);
+    const searchConditions = searchColumns.map(
+      (col) => `LOWER(${col}) LIKE LOWER(?)`,
+    );
     whereParts.push(`(${searchConditions.join(" OR ")})`);
     values.push(...searchColumns.map(() => `%${search}%`));
   }
 
-  // Simple exact filters (genre, district, etc.)
+  
   Object.entries(filters).forEach(([key, value]) => {
     if (value !== undefined && value !== null) {
       whereParts.push(`${key} = ?`);

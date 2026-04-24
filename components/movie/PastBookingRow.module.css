@@ -1,0 +1,73 @@
+.row {
+  background: #111;
+  border-radius: 16px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  border: 1px solid #222;
+}
+
+.movieInfo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.movieInfo img {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.movieInfo h4 {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.movieInfo p {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  color: #aaa;
+  font-size: 0.95rem;
+  min-width: 260px;
+}
+
+.price {
+  color: #facc15;
+  font-weight: 700;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.receiptBtn, .rebookBtn {
+  padding: 10px 22px;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+}
+
+.receiptBtn {
+  background: #222;
+  color: white;
+}
+
+.rebookBtn {
+  background: #1a1a1a;
+  color: #facc15;
+  border: 1px solid #facc15;
+}
