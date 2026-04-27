@@ -73,8 +73,6 @@ export default function PaymentPage() {
       const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
       const currentUserId = isLoggedIn ? localStorage.getItem("userId") : null;
 
-      alert("Current User ID: " + currentUserId);
-
       const res = await fetch("/api/bookings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

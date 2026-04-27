@@ -25,6 +25,25 @@ export default function BookingsPage() {
     }
   }, []);
 
+  function deleteBooking(bookingId) {
+    try {
+      fetch(`/api/bookings/${bookingId}`, {
+        method: "DELETE",
+      }).then((res) => { 
+        if (res.ok) {
+          alert("Booking deleted successfully");
+          fetchBookings();
+        } else {
+          alert("Failed to delete booking. Please try again.");
+        }
+       });
+    }
+    catch (error) {
+      console.error("Failed to delete booking:", error);
+      alert("Failed to delete booking. Please try again.");
+    }
+  }
+
   const fetchBookings = async () => {
     try {
       const userId = localStorage.getItem("userId");
@@ -90,7 +109,7 @@ export default function BookingsPage() {
                 <UpcomingBookingCard
                   key={booking.id}
                   booking={booking}
-                  onViewTicket={() => router.push(`/bookings/${booking.id}`)}
+                  onViewTicket={() => alert("Receipt feature coming soon")}
                 />
               ))}
             </div>
@@ -112,7 +131,7 @@ export default function BookingsPage() {
                   key={booking.id}
                   booking={booking}
                   onViewReceipt={() => alert("Receipt feature coming soon")}
-                  onRebook={() => router.push(`/movies`)}
+                  onDelete={() => alert("Delete feature coming soon")}
                 />
               ))}
             </div>

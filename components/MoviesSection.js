@@ -17,7 +17,7 @@ export default function MoviesSection({
   const [selectedGenre, setSelectedGenre] = useState(initialGenre);
   const [loading, setLoading] = useState(false);
 
-  const genres = ["Action", "Sci-Fi", "Drama", "Thriller", "Crime"];
+  const genres = ["Action", "Sci-Fi", "Drama", "Horror", "Crime"];
 
   const fetchMovies = async () => {
     setLoading(true);
@@ -38,13 +38,7 @@ export default function MoviesSection({
     }
   };
 
-  const [initialized, setInitialized] = useState(false);
-
   useEffect(() => {
-    if (!initialized) {
-      setInitialized(true);
-      return;
-    }
 
     fetchMovies();
   }, [limit, selectedGenre]);

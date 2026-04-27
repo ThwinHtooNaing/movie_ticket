@@ -13,31 +13,34 @@ const districts = [
   { label: "RIVERSIDE", value: "Riverside" },
 ];
 
-export default function CinemasClient({ initialData }) {
+export default function CinemasClient() {
   
-  const [cinemas, setCinemas] = useState(initialData?.data || []);
+  const [cinemas, setCinemas] = useState([]);
   const [pagination, setPagination] = useState(
-    initialData?.pagination || { total: 0, loaded: 0 },
+   { total: 0, loaded: 0 },
   );
+
+  const [existedData, setExistedData] = useState(null);
 
   const [limit, setLimit] = useState(6);
   const [selectedDistrict, setSelectedDistrict] = useState(null);
   const [loading, setLoading] = useState(false);
   const [navbarHidden, setNavbarHidden] = useState(false);
-  const [initialized, setInitialized] = useState(false);
 
   const fetchCinemas = async () => {
     setLoading(true);
 
     let url = `/api/cinemas?page=1&limit=${limit}`;
     if (selectedDistrict) {
-      url += `&address=${encodeURIComponent(selectedDistrict)}`;
+      url += `&district=${encodeURIComponent(selectedDistrict)}`;
     }
 
     try {
       const res = await fetch(url);
       const json = await res.json();
 
+      console.log("Fetched url:", url);
+      console.log("API Response:", json.data);
       setCinemas(json.data || []);
       setPagination(json.pagination || { total: 0, loaded: 0 });
     } catch (err) {
@@ -48,20 +51,18 @@ export default function CinemasClient({ initialData }) {
   };
 
   useEffect(() => {
-    if (!initialized) {
-      setInitialized(true);
-      return;
-    }
-
+    console.log("Selected District:", selectedDistrict);
     fetchCinemas();
+    
   }, [limit, selectedDistrict]);
 
-  // Navbar listener (unchanged)
+  console.log(existedData);
+  console.log("Cinemas State:", cinemas.length);
+
   useEffect(() => {
     const handleNavbarChange = (e) => {
       setNavbarHidden(e.detail.hidden);
     };
-
     window.addEventListener("navbarChange", handleNavbarChange);
     return () => window.removeEventListener("navbarChange", handleNavbarChange);
   }, []);
@@ -69,8 +70,10 @@ export default function CinemasClient({ initialData }) {
   const handleLoadMore = () => setLimit((prev) => prev + 6);
 
   const handleDistrictClick = (value) => {
+    setCinemas([]);
+    setLimit(6);     
     setSelectedDistrict(value);
-    setLimit(6);
+
   };
 
   return (

@@ -12,6 +12,7 @@ export async function GET(request) {
 
     const filters = {};
     if (searchParams.get("district")) {
+      console.log("Filtering by district:", searchParams.get("district"));
       filters.district = searchParams.get("district");
     }
 
@@ -24,6 +25,9 @@ export async function GET(request) {
       searchColumns: ["name", "title"],
       filters,
     });
+
+    console.log("API Request - Cinemas:", { page, limit, search, filters });
+    console.log("API Result - Cinemas:", result);
 
     return NextResponse.json({
       success: true,
