@@ -3,10 +3,7 @@ import styles from "./Hero.module.css";
 
 export default async function Hero() {
   
-  const res = await fetch("http://localhost:3000/api/hero", {
-    next: { revalidate: 60 }, 
-  });
-
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/hero`);
   if (!res.ok) {
     return (
       <section className={styles.hero}>

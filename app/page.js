@@ -3,7 +3,6 @@ import MoviesSection from "@/components/MoviesSection";
 
 export default async function Home() {
   
-
   return (
     <div>
       <Hero />
