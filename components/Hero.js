@@ -1,10 +1,9 @@
 import Link from "next/link";
 import styles from "./Hero.module.css";
-import { getHeroMovie } from "@/util/hero";
+import { getHeroMovie } from "@/utils/test";
 
 export default async function Hero() {
   
-  const res = await fetch(`${process.env.TIDB_HOST}/api/hero`);
   
 
   const movie = await getHeroMovie();
