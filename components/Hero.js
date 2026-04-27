@@ -7,7 +7,6 @@ export default async function Hero() {
   
 
   const movie = await getHeroMovie();
-  const rating = parseFloat(movie.avg_rating).toFixed(1);
 
   if (!movie) {
     return (
@@ -21,6 +20,10 @@ export default async function Hero() {
       </section>
     );
   }
+
+  const rating = movie.avg_rating
+    ? parseFloat(movie.avg_rating).toFixed(1)
+    : "0.0";
 
   return (
     <section
