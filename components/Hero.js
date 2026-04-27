@@ -1,10 +1,16 @@
 import Link from "next/link";
 import styles from "./Hero.module.css";
+import { getHeroMovie } from "@/util/hero";
 
 export default async function Hero() {
   
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/hero`);
-  if (!res.ok) {
+  const res = await fetch(`${process.env.TIDB_HOST}/api/hero`);
+  
+
+  const movie = await getHeroMovie();
+  const rating = parseFloat(movie.avg_rating).toFixed(1);
+
+  if (!movie) {
     return (
       <section className={styles.hero}>
         <div className={styles.overlay} />
@@ -16,9 +22,6 @@ export default async function Hero() {
       </section>
     );
   }
-
-  const { movie } = await res.json();
-  const rating = parseFloat(movie.avg_rating).toFixed(1);
 
   return (
     <section
