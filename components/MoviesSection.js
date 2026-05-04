@@ -37,7 +37,7 @@ export default function MoviesSection({
       setLoading(false);
     }
   };
-
+  
   useEffect(() => {
 
     fetchMovies();

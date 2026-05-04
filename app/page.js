@@ -1,4 +1,4 @@
-import Hero from "../components/Hero";
+import Hero from "@/components/Hero";
 import MoviesSection from "@/components/MoviesSection";
 
 export default async function Home() {

@@ -112,6 +112,10 @@ export default function PaymentPage() {
   };
 
   const handlePayment = () => {
+    if (!formData.cardNumber || !formData.expiry || !formData.cvv) {
+      alert("Please fill in all card details");
+      return;
+    }
     submitBooking(false);
   };
 

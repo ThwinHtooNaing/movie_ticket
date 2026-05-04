@@ -20,7 +20,6 @@ export const generateTicketPDF = async (booking, selectedSeats, bookingId) => {
     format: "a4",
   });
 
-  // Background
   doc.setFillColor(17, 17, 17);
   doc.rect(0, 0, 210, 297, "F");
 

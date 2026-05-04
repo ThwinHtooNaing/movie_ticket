@@ -3,8 +3,7 @@ import styles from "./Hero.module.css";
 import { getHeroMovie } from "@/utils/test";
 
 export default async function Hero() {
-  
-  
+
 
   const movie = await getHeroMovie();
 
@@ -52,6 +51,7 @@ export default async function Hero() {
           <Link href={`/movies/${movie.id}`} className={styles.primary}>
             🎟 Book Ticket
           </Link>
+
         </div>
       </div>
     </section>

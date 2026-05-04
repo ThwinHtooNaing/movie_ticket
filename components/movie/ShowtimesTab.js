@@ -64,7 +64,7 @@ export default function ShowtimesTab({ movie }) {
           setShowtimes(data);
         }
       } catch (err) {
-        console.error(err);
+        console.error(err); 
       } finally {
         setLoading(false);
       }

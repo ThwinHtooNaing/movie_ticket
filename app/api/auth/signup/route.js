@@ -22,6 +22,8 @@ export async function POST(request) {
       );
     }
 
+
+    // Check if email already exists
     const [existing] = await pool.query(
       "SELECT id FROM users WHERE email = ?",
       [email],
@@ -67,7 +69,7 @@ export async function POST(request) {
       [userId,name, email, password_hash, img_url],
     );
 
-    
+
     return NextResponse.json({
       success: true,
       user: {
